@@ -1,1 +1,16 @@
-
+{
+  "version": 1,
+  "catalogName": "VisionAR Cloud",
+  "models": [
+    {
+      "id": "camera",
+      "name": "Camera",
+      "model": "assets/models/camera.glb"
+    },
+    {
+      "id": "buchta",
+      "name": "Buchta",
+      "model": "assets/models/buchta.glb"
+    }
+  ]
+}
