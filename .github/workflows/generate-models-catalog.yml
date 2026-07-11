@@ -1,0 +1,56 @@
+name: Generate models catalog
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/models/**"
+      - "scripts/generate_models_catalog.py"
+      - ".github/workflows/generate-models-catalog.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Serializes runs so two near-simultaneous pushes can't race to push
+# models.json to the same branch tip.
+concurrency:
+  group: generate-models-catalog
+  cancel-in-progress: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate models.json
+        run: python scripts/generate_models_catalog.py
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet -- models.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # commit message contains [skip ci] as an extra safeguard against
+      # infinite workflow loops, in addition to the push path filters above
+      # (a commit touching only models.json at repo root doesn't match any
+      # of them anyway).
+      - name: Commit and push models.json
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add models.json
+          git commit -m "chore: regenerate models.json [skip ci]"
+          git push
