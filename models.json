@@ -3,14 +3,39 @@
   "catalogName": "VisionAR Cloud",
   "models": [
     {
+      "id": "buchta",
+      "name": "Buchta",
+      "model": "assets/models/buchta.glb"
+    },
+    {
       "id": "camera",
       "name": "Camera",
       "model": "assets/models/camera.glb"
     },
     {
-      "id": "buchta",
-      "name": "Buchta",
-      "model": "assets/models/buchta.glb"
+      "id": "dance",
+      "name": "Dance",
+      "model": "assets/models/dance.glb"
+    },
+    {
+      "id": "house",
+      "name": "House",
+      "model": "assets/models/house.glb"
+    },
+    {
+      "id": "mina",
+      "name": "Mina",
+      "model": "assets/models/mina.glb"
+    },
+    {
+      "id": "tower",
+      "name": "Tower",
+      "model": "assets/models/tower.glb"
+    },
+    {
+      "id": "tree",
+      "name": "Tree",
+      "model": "assets/models/tree.glb"
     }
   ]
 }
