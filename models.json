@@ -31,11 +31,6 @@
       "id": "tower",
       "name": "Tower",
       "model": "assets/models/tower.glb"
-    },
-    {
-      "id": "tree",
-      "name": "Tree",
-      "model": "assets/models/tree.glb"
     }
   ]
 }
