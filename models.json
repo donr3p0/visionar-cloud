@@ -5,37 +5,44 @@
     {
       "id": "buchta",
       "name": "Buchta",
-      "model": "assets/models/buchta.glb"
+      "model": "assets/models/buchta.glb",
+      "sizeBytes": 6267524
     },
     {
       "id": "camera",
       "name": "Camera",
-      "model": "assets/models/camera.glb"
+      "model": "assets/models/camera.glb",
+      "sizeBytes": 19505580
     },
     {
       "id": "dance",
       "name": "Dance",
-      "model": "assets/models/dance.glb"
+      "model": "assets/models/dance.glb",
+      "sizeBytes": 7739448
     },
     {
       "id": "house",
       "name": "House",
-      "model": "assets/models/house.glb"
+      "model": "assets/models/house.glb",
+      "sizeBytes": 12234672
     },
     {
       "id": "mina",
       "name": "Mina",
-      "model": "assets/models/mina.glb"
+      "model": "assets/models/mina.glb",
+      "sizeBytes": 589304
     },
     {
       "id": "tower",
       "name": "Tower",
-      "model": "assets/models/tower.glb"
+      "model": "assets/models/tower.glb",
+      "sizeBytes": 10893732
     },
     {
       "id": "tree",
       "name": "Tree",
-      "model": "assets/models/tree.glb"
+      "model": "assets/models/tree.glb",
+      "sizeBytes": 8912220
     }
   ]
 }
