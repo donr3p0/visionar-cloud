@@ -6,6 +6,11 @@ This script never reads the existing models.json — the output is derived
 purely from the current directory listing, so renamed/deleted files never
 linger as stale entries and the same folder contents always produce the
 same output.
+
+Each entry also includes an optional "sizeBytes" field — the exact size of
+the .glb file on disk at generation time, read via plain filesystem stat()
+(no GitHub-specific API, so this script stays usable outside GitHub Actions
+too). Consumers that predate this field should treat it as optional.
 """
 
 import json
@@ -62,7 +67,8 @@ def main() -> int:
         seen_ids[model_id] = glb_path.name
 
         model_path = f"assets/models/{glb_path.name}"
-        if not (REPO_ROOT / model_path).is_file():
+        resolved_path = REPO_ROOT / model_path
+        if not resolved_path.is_file():
             print(
                 f"ERROR: generated model path does not exist: {model_path}",
                 file=sys.stderr,
@@ -74,6 +80,7 @@ def main() -> int:
                 "id": model_id,
                 "name": derive_display_name(model_id),
                 "model": model_path,
+                "sizeBytes": resolved_path.stat().st_size,
             }
         )
 
